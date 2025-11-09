@@ -38,6 +38,8 @@ jobs:
         run: pnpm run lint
 
       - name: Build website
+        env:
+          NODE_ENV: production
         run: pnpm run build
 
       - name: Upload Pages Artifact
