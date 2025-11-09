@@ -90,7 +90,7 @@
 <style lang="postcss">
   .animation-container {
     width: 100%;
-    max-width: 700px;
+    max-width: 650px;
     margin: 0.75rem auto;
     padding: 0.5rem;
     background: #2a2a2a;

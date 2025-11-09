@@ -66,7 +66,7 @@
 
   .sql-description {
     color: #c1bebe;
-    margin: 0.5rem 0;
+    margin: 0.5rem 2rem;
   }
 
   .sql-code-block {
