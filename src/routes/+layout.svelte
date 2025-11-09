@@ -37,13 +37,13 @@
 </style>
 
 <a
-  href="https://github.com/le0pard/sql-joins-app"
+  href="https://github.com/SamMed05/sql-joins-app"
   class="github-corner"
   title="Github source code"
   aria-label="Github source code">
   <svg
-    width="80"
-    height="80"
+    width="50"
+    height="50"
     viewBox="0 0 250 250"
     style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>

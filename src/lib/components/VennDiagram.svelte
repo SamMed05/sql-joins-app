@@ -13,15 +13,40 @@
 
   let sqlState = $state(DEFAULT_VALUE)
 
-  const animatePath = (path, isSelected = false) => {
+  const animatePath = (path, isSelected = false, pathType = 'left') => {
     const fillColor = (() => {
       if (isSelected) {
-        return '#c25827'
+        if (pathType === 'right') {
+          return '#d4a836' // Yellow for right circle
+        }
+        return '#c25827' // Orange for left circle
       }
       return '#3a3a3a'
     })()
 
     path
+      .animate({
+        duration: 600,
+        delay: 0,
+        when: 'now'
+      })
+      .attr({
+        fill: fillColor
+      })
+  }
+  
+  const updateIntersectionColor = (leftSelected, rightSelected) => {
+    let fillColor = '#c8903e' // Default to blend color when intersection is selected
+    
+    if (leftSelected && rightSelected) {
+      fillColor = '#c8903e' // Blend of orange and yellow
+    } else if (leftSelected) {
+      fillColor = '#c25827' // Orange only
+    } else if (rightSelected) {
+      fillColor = '#d4a836' // Yellow only
+    }
+    
+    intersectOfCircleEl
       .animate({
         duration: 600,
         delay: 0,
@@ -37,15 +62,23 @@
 
     if (options.left) {
       left = left === 1 ? 0 : 1
-      animatePath(leftCircleEl, left === 1)
+      animatePath(leftCircleEl, left === 1, 'left')
     }
     if (options.center) {
       center = center === 1 ? 0 : 1
-      animatePath(intersectOfCircleEl, center === 1)
     }
     if (options.right) {
       right = right === 1 ? 0 : 1
-      animatePath(rightCircleEl, right === 1)
+      animatePath(rightCircleEl, right === 1, 'right')
+    }
+
+    // Update intersection color based on state
+    if (center === 1) {
+      // Intersection is selected, color it based on which circles are also selected
+      updateIntersectionColor(left === 1, right === 1)
+    } else {
+      // Intersection is not selected
+      animatePath(intersectOfCircleEl, false)
     }
 
     sqlState = [left, center, right].map((i) => String(i)).join('.')

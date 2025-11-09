@@ -4,6 +4,7 @@
   import hljs from '@utils/highlight'
   import { DEFAULT_VALUE, SQL_MAP } from '@utils/constants'
   import VennDiagram from './VennDiagram.svelte'
+  import ManimAnimation from './ManimAnimation.svelte'
 
   let copyButtonEl = $state(null)
   let isButtonClicked = $state(false)
@@ -12,11 +13,13 @@
   let sqlText = $state(SQL_MAP[DEFAULT_VALUE].sql.trim())
   let sqlExample = $derived(hljs.highlight(sqlText, { language: 'sql' }).value)
   let isButtonDisabled = $derived(sqlText.length === 0)
+  let currentJoinType = $state(DEFAULT_VALUE)
 
   const handleClick = (state = DEFAULT_VALUE) => {
     let { sql, description } = SQL_MAP[state]
     sqlText = sql.trim()
     descriptionText = description
+    currentJoinType = state
   }
 
   onMount(() => {
@@ -58,11 +61,12 @@
   }
 
   .venn-diagram {
-    padding: 1rem;
+    padding: 0.5rem;
   }
 
   .sql-description {
     color: #c1bebe;
+    margin: 0.5rem 0;
   }
 
   .sql-code-block {
@@ -71,7 +75,7 @@
   }
 
   .sql-code-pre {
-    margin: 1rem 0;
+    margin: 0.5rem 0;
     min-height: 0;
     line-height: 1.1;
     width: 100%;
@@ -80,7 +84,8 @@
 
   .sql-code-text {
     padding: 1rem;
-    width: 100%;
+    width: calc(100% - 20px);
+    margin: auto;
     box-sizing: border-box;
   }
 
@@ -120,8 +125,8 @@
   /* button positioned inside the code area */
   .code-copy-button {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
+    top: 0rem;
+    right: 0rem;
     z-index: 10;
     padding: 0.5rem;
     font-size: 0.9rem;
@@ -148,6 +153,9 @@
   </div>
 
   <p class="sql-description">{descriptionText}</p>
+
+  <!-- Manim Animation Section -->
+  <ManimAnimation joinType={currentJoinType} />
 
   <div class="sql-code-block">
     <!-- eslint-disable svelte/no-at-html-tags -->

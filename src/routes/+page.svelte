@@ -7,10 +7,11 @@
   .wrapper {
     display: flex;
     flex-direction: column;
-    margin: 1rem auto;
+    margin: 0.5rem auto;
     max-width: 51rem;
-    padding: 1rem;
+    padding: 0.5rem;
     border: #5d5d5d 1px solid;
+    border-radius: 8px;
   }
 </style>
 

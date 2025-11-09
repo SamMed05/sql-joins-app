@@ -1,0 +1,20 @@
+# Manim output directories
+media/
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python virtual environment (if used)
+venv/
+env/
+.venv/
+
+# Generated videos (they go to static/animations)
+*.mp4
+*.mov
+*.gif
+*.png
+!README.md
