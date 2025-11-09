@@ -1,5 +1,6 @@
 <script>
   import { onMount, onDestroy } from 'svelte'
+  import { base } from '$app/paths'
 
   let { joinType = '0.0.0' } = $props()
 
@@ -21,7 +22,7 @@
   const getAnimationPath = (type) => {
     const animationName = animationMap[type]
     if (!animationName) return null
-    return `/animations/${animationName}.mp4`
+    return `${base}/animations/${animationName}.mp4`
   }
 
   const loadAnimation = (type) => {
