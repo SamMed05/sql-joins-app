@@ -49,13 +49,12 @@
       return
     }
 
-    // Begin loading the new source (cache-busted to avoid stale 404s)
-    const cacheBusted = `${path}?v=${Date.now()}`
-    currentSrc = cacheBusted
+    // Load the video without cache busting to allow proper caching
+    currentSrc = path
     isLoading = true
     hasError = false
     if (videoEl) {
-      videoEl.src = cacheBusted
+      videoEl.src = path
       videoEl.load()
     }
   }
@@ -68,9 +67,15 @@
     if (videoEl) {
       const onLoaded = () => {
         isLoading = false
-        videoEl.play().catch(() => {})
+        // Try to play, but don't let it break if autoplay is blocked
+        // In iframes, muted videos have a better chance of autoplaying
+        videoEl.play().catch((error) => {
+          // Autoplay was prevented, user will need to click play
+          console.log('Autoplay prevented - user interaction required', error)
+        })
       }
-      const onError = () => {
+      const onError = (e) => {
+        console.error('Video loading error:', e, 'Source:', videoEl?.src)
         hasError = true
         isLoading = false
       }
@@ -229,7 +234,9 @@
     class:hidden={!currentSrc || isLoading || hasError}
     controls
     loop
-    playsinline>
+    muted
+    playsinline
+    crossorigin="anonymous">
     <track kind="captions" />
   </video>
 </div>
