@@ -1,8 +1,0 @@
-# Allow embedding in iframes from any origin
-/*
-  X-Frame-Options: ALLOWALL
-  
-# Allow videos to be embedded cross-origin
-/animations/*
-  Access-Control-Allow-Origin: *
-  Cross-Origin-Resource-Policy: cross-origin

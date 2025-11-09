@@ -235,8 +235,7 @@
     controls
     loop
     muted
-    playsinline
-    crossorigin="anonymous">
+    playsinline>
     <track kind="captions" />
   </video>
 </div>
