@@ -9,7 +9,7 @@
 
   .hero-title {
     color: #040507;
-    font-size: 2.5rem;
+    font-size: 2rem;
     padding: 0 1rem;
     margin: 0.5rem 0 0.3rem 0;
   }
@@ -23,10 +23,10 @@
 
 <div class="hero-block">
   <h1 class="hero-title">SQL Joins Visualizer</h1>
-  <p class="hero-text">
+  <!--<p class="hero-text">
     SQL Joins Visualizer help to you build SQL JOIN between two tables by using of <a
       href="//en.wikipedia.org/wiki/Venn_diagram"
       target="_blank"
       rel="noopener noreferrer">Venn diagrams</a>
-  </p>
+  </p>-->
 </div>
