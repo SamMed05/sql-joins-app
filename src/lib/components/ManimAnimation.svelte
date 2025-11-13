@@ -22,7 +22,7 @@
   const getAnimationPath = (type) => {
     const animationName = animationMap[type]
     if (!animationName) return null
-    return `${base}/animations/${animationName}.mp4`
+    return `${base}/animations/${animationName}.webm`
   }
 
   const getGitHubCodeUrl = (type) => {
